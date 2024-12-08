@@ -11,8 +11,10 @@ const app = express();
 // CORS configuration
 const corsOptions = {
   origin: [
+    "http://localhost:3000",  // Allow requests from this subdomain
     "https://afghan.ayancurtains.com",  // Allow requests from this domain
-    "https://admin.afghan.ayancurtains.com"  // Allow requests from this subdomain
+    "https://admin.afghan.ayancurtains.com",  // Allow requests from this subdomain
+
   ],
   methods: ["GET", "POST", "PUT", "DELETE"], // You can customize allowed methods
   credentials: true,  // Enable sending credentials (cookies, authorization headers, etc.)

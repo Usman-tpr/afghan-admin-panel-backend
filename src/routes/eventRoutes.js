@@ -1,6 +1,6 @@
 const router = require("express").Router()
 const upload = require("../config/multerConfig");
-const { create , getAll , deleteEvent } = require("../controllers/eventController");
+const { create , getAll , deleteEvent , updateEvent } = require("../controllers/eventController");
 
 router.post("/" ,upload.single("image"), create)
 router.get("/" , getAll)

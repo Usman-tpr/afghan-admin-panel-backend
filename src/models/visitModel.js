@@ -4,12 +4,15 @@ const createSchema = require("./baseModel");
 
 const schema = createSchema({
   image: "", // Automatically a required String
-  title_en:"",
-  title_par:"",
-  description_en:"",
-  description_par:"",
-  date_en:"",
-  date_par:""
+  title_english:"",
+  title_pashto:"",
+  title_parsi:"",
+  description_english:"",
+  description_parsi:"",
+  description_pashto:"",
+  date_english:"",
+  date_parsi:"",
+  date_pashto:""
 });
 
-module.exports = mongoose.model("Visit", schema);
+module.exports = mongoose.model("AfghanVisit", schema);

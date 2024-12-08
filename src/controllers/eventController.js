@@ -34,12 +34,43 @@ const create = async (req, res) => {
 
     }
   }
+  const updateEvent= async (req, res) => {
+    try {
+      const visitId = req.params.id; // Get visit ID from the URL parameter
+      const updatedData = req.body;  // Get the fields sent by the frontend
+  
+      // Find the visit by its ID
+      const visit = await Event.findById(visitId);
+  
+      if (!visit) {
+        return res.status(404).json({ message: "Visit not found" });
+      }
+  
+      // Update only the fields provided in the request body
+      Object.keys(updatedData).forEach((key) => {
+        if (updatedData[key] !== undefined) {
+          visit[key] = updatedData[key];
+        }
+      });
+  
+      // Save the updated visit
+      const updatedVisit = await visit.save();
+  
+      // Respond with the updated visit
+      return createResponse(res , 201 , messages.SUCCESS.DATA_UPDATED , updatedVisit)
+  
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Server error" });
+    }
+  };
   
 
 module.exports = {
   create,
   getAll,
-  deleteEvent
+  deleteEvent,
+  updateEvent
 };
 
 
